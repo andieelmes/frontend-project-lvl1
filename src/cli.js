@@ -2,7 +2,7 @@ import readlineSync from 'readline-sync';
 import getResponse from './helpers/get-response.js';
 
 export const askName = () => {
-  const name = readlineSync.question('May I have your name? ');
+  const name = readlineSync.question('May I have your name? ') || 'Anonymous';
   console.log(`Hello, ${name}!`);
   return name;
 };
