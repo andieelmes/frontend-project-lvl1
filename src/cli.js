@@ -1,8 +1,18 @@
 import readlineSync from 'readline-sync';
+import getResponse from './helpers/get-response.js';
 
-// eslint-disable-next-line import/prefer-default-export
 export const askName = () => {
   const name = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${name}!`);
   return name;
+};
+
+export const askQuestion = (prompt) => {
+  const { question, correctAnswer } = prompt;
+
+  console.log(`Question: ${question}`);
+  const userAnswer = readlineSync.question('Your answer: ');
+  console.log(getResponse(correctAnswer, userAnswer));
+
+  return { isCorrectAnswer: userAnswer === correctAnswer };
 };

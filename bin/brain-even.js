@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 import { askName } from '../src/cli.js';
-import play from '../src/brain-even.js';
+import printWelcome from '../src/helpers/print-welcome.js';
+import play from '../src/games/brain-even.js';
 
-console.log('Welcome to the Brain Games!');
-const name = askName();
-play(name);
+printWelcome();
+play(askName());
