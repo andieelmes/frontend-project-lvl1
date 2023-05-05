@@ -11,26 +11,29 @@ const NO = 'no';
 const numbers = Array(MAX_ROUND_COUNT).fill().map(() => getRandomNumber());
 const isNumberEven = (number) => number % 2 === 0;
 
-export default (name) => {
-  let correctAnswersCount = 0;
+const prompt = (name, prevCount = 0) => {
+  let count = prevCount;
 
-  console.log(`Answer "${YES}" if the number is even, otherwise answer "${NO}".`);
+  console.log('What is the result of the expression?');
 
-  // eslint-disable-next-line no-restricted-syntax
-  for (const number of numbers) {
-    const { isCorrectAnswer } = askQuestion({
-      question: number,
-      correctAnswer: isNumberEven(number) ? YES : NO,
-    });
+  const number = numbers.shift();
+  const { isCorrectAnswer } = askQuestion({
+    question: number,
+    correctAnswer: isNumberEven(number) ? YES : NO,
+  }, name);
 
-    if (!isCorrectAnswer) {
-      break;
-    }
+  if (!isCorrectAnswer) return;
 
-    correctAnswersCount += 1;
-  }
+  count += 1;
 
-  if (correctAnswersCount === MAX_ROUND_COUNT) {
+  if (count === MAX_ROUND_COUNT) {
     printCongrats(name);
+    return;
   }
+
+  prompt(name, count);
+};
+
+export default (name) => {
+  prompt(name);
 };

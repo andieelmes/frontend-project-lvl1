@@ -23,12 +23,9 @@ const prompt = (name, prevCount = 0) => {
   let count = prevCount;
 
   console.log('What is the result of the expression?');
-  const { isCorrectAnswer } = askQuestion(getPrompt());
+  const { isCorrectAnswer } = askQuestion(getPrompt(), name);
 
-  if (!isCorrectAnswer) {
-    console.log(`Let's try again, ${name}!`);
-    return;
-  }
+  if (!isCorrectAnswer) return;
 
   count += 1;
 
