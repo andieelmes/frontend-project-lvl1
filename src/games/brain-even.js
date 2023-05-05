@@ -3,12 +3,12 @@
 import { askQuestion } from '../cli.js';
 import getRandomNumber from '../helpers/get-random-number.js';
 import printCongrats from '../helpers/print-congrats.js';
+import MAX_ROUND_COUNT from '../constants/max-round-count.js';
 
 const YES = 'yes';
 const NO = 'no';
-const QUIZ_LENGTH = 3;
 
-const numbers = Array(QUIZ_LENGTH).fill().map(() => getRandomNumber());
+const numbers = Array(MAX_ROUND_COUNT).fill().map(() => getRandomNumber());
 const isNumberEven = (number) => number % 2 === 0;
 
 export default (name) => {
@@ -30,7 +30,7 @@ export default (name) => {
     correctAnswersCount += 1;
   }
 
-  if (correctAnswersCount === QUIZ_LENGTH) {
+  if (correctAnswersCount === MAX_ROUND_COUNT) {
     printCongrats(name);
   }
 };

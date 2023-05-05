@@ -3,8 +3,7 @@
 import { askQuestion } from '../cli.js';
 import getRandomNumber from '../helpers/get-random-number.js';
 import printCongrats from '../helpers/print-congrats.js';
-
-const QUIZ_LENGTH = 3;
+import MAX_ROUND_COUNT from '../constants/max-round-count.js';
 
 const EXPRESSIONS = [
   { kind: '+', fn: (a, b) => a + b },
@@ -33,7 +32,7 @@ const prompt = (name, prevCount = 0) => {
 
   count += 1;
 
-  if (count === QUIZ_LENGTH) {
+  if (count === MAX_ROUND_COUNT) {
     printCongrats(name);
     return;
   }
