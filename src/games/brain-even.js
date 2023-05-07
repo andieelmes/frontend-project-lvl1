@@ -1,9 +1,7 @@
 import { askQuestion } from '../cli.js';
 import getRandomNumber from '../helpers/get-random-number.js';
 import prompt from '../helpers/prompt.js';
-
-const YES = 'yes';
-const NO = 'no';
+import { YES, NO } from '../constants/yes-no-answers.js';
 
 const isNumberEven = (number) => number % 2 === 0;
 
@@ -17,7 +15,7 @@ const prepareQuestion = (name) => {
 };
 
 export default (name) => {
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
+  console.log(`Answer "${YES}" if the number is even, otherwise answer "${NO}".`);
 
   prompt(prepareQuestion, name);
 };
