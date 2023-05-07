@@ -22,7 +22,7 @@ const prepareQuestion = (name) => {
 };
 
 export default (name) => {
-  console.log(`Answer "${YES}" if the number is prime, otherwise answer "${NO}".`);
+  console.log(`Answer "${YES}" if given number is prime. Otherwise answer "${NO}".`);
 
   prompt(prepareQuestion, name);
 };
